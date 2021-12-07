@@ -1,0 +1,21 @@
+version: '3'
+services:
+#  service-registry:
+#    image: priyas115/cloud-priya:latest
+#    ports:
+#      - "8761:8761"
+
+  api-gateway:
+    build: .
+    container_name: apigateway
+    ports:
+      - "9191:9191"
+#    links:
+#      - service-registry
+#    depends_on:
+#      - service-registry
+    environment:
+#      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://service-registry:8761/eureka
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://localhost:8761/eureka
+      eureka_instance_preferIpAddress: true
+
